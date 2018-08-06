@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Jeremy Edberg - Scalable Cloud Architectures | Tech Talk",
+        "url": "https://www.youtube.com/watch?v=cCAO9moDucI&list=PLUGDC1tkjMjc1v0b00Gc3OWLh37dleDKU&t=3s&index=3",
+        "video": "cCAO9moDucI",
+        "service": "youtube",
+        "cover_image": "http://img.youtube.com/vi/cCAO9moDucI/0.jpg",
+        "length": "3487",
+        "speaker": {
+            "name": "Jeremy Edberg",
+            "website": "https://twitter.com/jedberg"
+        },
+        "date": "10/26/2012",
+        "tags": [
+            "cloud",
+            "devops"
+        ]
+    }
+]
