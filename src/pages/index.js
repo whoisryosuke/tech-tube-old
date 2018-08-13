@@ -1,43 +1,34 @@
 import React, { Component } from "react";
-import Link from "gatsby-link";
 import Img from "gatsby-image";
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogActions from '@material-ui/core/DialogActions'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
+import withRoot from '../withRoot'
 
-export default class Frontpage extends Component {
+import VideoCard from '../components/VideoCard/VideoCard'
+
+const styles = theme => ({
+  root: {
+    textAlign: 'center',
+    paddingTop: theme.spacing.unit * 20,
+  },
+})
+
+class Frontpage extends Component {
 
   render() {
     let { data } = this.props;
-
+    const { classes } = this.props
     const {
       videos,
     } = data;
 
-    const loop = videos.edges.map(video => <div className="Card">
-        <figure className="cover">
-          <img src={video.node.cover_image} />
-        </figure>
-        <div className="content">
-          <Link to={video.node.fields.slug} className="header">
-            {video.node.name}
-          </Link>
-          <aside className="meta">
-            <span className="length">
-              {/* Minutes = length / 60 : Seconds = Length - (Minutes * 60) */}
-              {/* https://stackoverflow.com/questions/3733227/javascript-seconds-to-minutes-and-seconds */}
-              {/* https://stackoverflow.com/questions/8513032/less-than-10-add-0-to-number */}
-              {Math.round(Number(video.node.length) / 60)}:{Number(video.node.length) - Math.round(Number(video.node.length) / 60) * 60}
-            </span>
-            <span className="date">{video.node.date}</span>
-          </aside>
-          <p className="speaker">{video.node.speaker.name}</p>
-          <nav className="Tags">
-            {video.node.tags.map(tag => (
-              <Link to={`tag/${tag}`} className="tag">
-                {tag}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </div>)
+    const loop = videos.edges.map(video => <VideoCard video={video} />)
 
     return (
       <div className="Frontpage pt2">
@@ -78,3 +69,5 @@ export const query = graphql`
     }
   }
 `
+
+export default withRoot(withStyles(styles)(Frontpage))
