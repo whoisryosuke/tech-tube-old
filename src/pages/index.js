@@ -8,14 +8,12 @@ import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogActions from '@material-ui/core/DialogActions'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
-import withRoot from '../withRoot'
 
 import VideoCard from '../components/VideoCard/VideoCard'
 
 const styles = theme => ({
   root: {
-    textAlign: 'center',
-    paddingTop: theme.spacing.unit * 20,
+    padding: theme.spacing.unit * 2,
   },
 })
 
@@ -31,7 +29,12 @@ class Frontpage extends Component {
     const loop = videos.edges.map(video => <VideoCard video={video} />)
 
     return (
-      <div className="Frontpage pt2">
+      <div className={classes.root}>
+
+        <Typography variant="headline" gutterBottom>
+          Latest Talks
+        </Typography>
+
         <div className="Cards">
           { loop }        
         </div>
@@ -70,4 +73,4 @@ export const query = graphql`
   }
 `
 
-export default withRoot(withStyles(styles)(Frontpage))
+export default withStyles(styles)(Frontpage)
