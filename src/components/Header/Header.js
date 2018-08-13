@@ -10,6 +10,10 @@ const styles = {
   root: {
     flexGrow: 1,
   },
+  link: {
+    textDecoration: 'none',
+    color: '#FFF'
+  },
   header: {
     backgroundColor: '#000000'
   }
@@ -20,11 +24,9 @@ function Header(props) {
   return <div className={classes.root}>
       <AppBar position="sticky" className={classes.header}>
         <Toolbar>
-          <Link to="/">
-            <Typography variant="title" color="inherit">
-              Tech Tube
-            </Typography>
-          </Link>
+          <Typography variant="title" color="inherit">
+            <Link to="/" className={classes.link}>Tech Tube</Link>
+          </Typography>
         </Toolbar>
       </AppBar>
     </div>
