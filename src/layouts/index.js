@@ -34,7 +34,7 @@ const Layout = ({ children, data, classes }) => (
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
-    <Header siteTitle={data.site.siteMetadata.title} />
+    <Header siteTitle={data.site.siteMetadata.title} categories={data.tags} />
     <div className={classes.root}>
       {children()}
     </div>
@@ -52,6 +52,15 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+      }
+    },
+    tags: allVideosJson(
+      sort: {fields: [date], order: DESC}, 
+      limit: 6
+    ) {
+    	group(field: tags) {
+        fieldValue
+        totalCount
       }
     }
   }
