@@ -57,7 +57,7 @@ const VideoCard = ({ video, classes }) => {
 
         {/* <VideoTime length={video.node.length} /> */}
         
-        <Tags tags={video.node.tags} />
+        {/* <Tags tags={video.node.tags} /> */}
 
       </CardContent>
     </Card>
